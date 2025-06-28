@@ -87,11 +87,13 @@ moduleEl.addEventListener("submit", (event) => {
 
 wrapperEl.addEventListener("click",(event)=>{
     if(event.target.name ==="delete-btn"){
+       if(confirm("are you sure?")){
         const id = event.target.dataset.id
         fetch(`${API_URL}/car/${id}`,{method:"DELETE"})
             .then(()=>{
                 wrapperEl.innerHTML = null
                 fetchData("car",createCard)
             })
+       }
     }
 })
